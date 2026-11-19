@@ -1,0 +1,49 @@
+# AegisHud
+# Весь текст в формате MiniMessage:
+# https://docs.advntr.dev/minimessage/format.html
+
+# Как часто обновляются строки (20 тиков = 1 секунда)
+lines-update-ticks: 10
+
+# Миры, где показывается HUD. Пусто = везде.
+enabled-worlds: []
+
+# Валюта сервера
+currency:
+  name: "Аметисты"
+  # internal = встроенный баланс плагина (команда /amethyst, файл balances.yml)
+  # Если у тебя уже есть плагин экономики, укажи вместо internal его плейсхолдер
+  # PlaceholderAPI, например: "%vault_eco_balance%"
+  source: internal
+
+title:
+  animated: true
+  speed-ticks: 2     # как часто меняется кадр анимации заголовка
+  step: 0.05         # на сколько сдвигается градиент за кадр
+  # {phase} заменяется на сдвиг градиента, первый и последний цвет одинаковые для плавного цикла
+  format: "<gradient:#6d28d9:#c084fc:#f0abfc:#c084fc:#6d28d9:{phase}><bold>AEGIS</bold></gradient>"
+
+# До 15 строк, сверху вниз. Пустая строка "" = отступ.
+# Встроенные плейсхолдеры:
+#   %player% (ник)  %ping%  %ping_color% (зелёный/жёлтый/красный по качеству пинга)
+#   %amethysts% (баланс аметистов)
+#   %online% %max% %world% %time% %date% %tps% %coords%
+#   %kills% %deaths%   (считаются плагином, сброс: /aegishud resetstats)
+#   %alive%            (игроки в режиме выживания в твоём мире)
+#   %border%           (размер границы мира)
+#   %border_dist%      (сколько блоков до края границы)
+# Если стоит PlaceholderAPI, работают и его %плейсхолдеры%.
+lines:
+  - "<dark_gray>%date% <gray>• <dark_gray>%time%"
+  - ""
+  - "<white>Ник <dark_gray>» <#c084fc><bold>%player%</bold>"
+  - "<white>Пинг <dark_gray>» %ping_color%%ping%<gray> мс"
+  - "<white>Аметисты <dark_gray>» <#e879f9>♦ %amethysts%"
+  - ""
+  - "<white>Живых <dark_gray>» <#ffd54f>%alive%"
+  - "<white>Убийств <dark_gray>» <#ff5252>%kills%"
+  - ""
+  - "<white>Зона <dark_gray>» <#a78bfa>%border%<gray> блоков"
+  - "<white>До края <dark_gray>» <#c4b5fd>%border_dist%<gray> м"
+  - ""
+  - "<gradient:#6d28d9:#e879f9>play.aegis.gg</gradient>"

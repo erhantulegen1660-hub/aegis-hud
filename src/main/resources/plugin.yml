@@ -1,0 +1,22 @@
+name: AegisHud
+version: '1.1.0'
+main: me.aegis.hud.AegisHud
+api-version: '1.21.11'
+description: Animated sidebar scoreboard with amethyst currency for Aegis
+softdepend: [PlaceholderAPI]
+commands:
+  aegishud:
+    description: Управление HUD
+    usage: /aegishud reload|toggle|resetstats
+    aliases: [ahud]
+  amethyst:
+    description: Баланс аметистов
+    usage: /amethyst [balance|give|take|set]
+    aliases: [ame]
+permissions:
+  aegishud.admin:
+    description: reload, resetstats, управление аметистами
+    default: op
+  aegishud.toggle:
+    description: Включать/выключать свой скорборд
+    default: true
